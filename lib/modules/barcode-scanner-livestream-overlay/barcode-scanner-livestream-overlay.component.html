@@ -1,0 +1,6 @@
+<div class="barcode-scanner-livestream-overlay" [hidden]="!showScanner">
+    <div class="barcode-scanner-livestream-overlay-content">
+        <div class="barcode-scanner-livestream-overlay-close" (click)="hide()">X</div>
+        <barcode-scanner-livestream [type]="type" (valueChanges)="onValueChanges($event)"></barcode-scanner-livestream>
+    </div>
+</div>

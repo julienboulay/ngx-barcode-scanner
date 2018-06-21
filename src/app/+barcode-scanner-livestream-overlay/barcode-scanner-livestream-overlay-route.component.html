@@ -1,0 +1,9 @@
+<div class="barcode-scanner-container">
+  <button type="button" (click)="startBarecodeScannerOverlay()">Scan codebar with overlay window</button>
+  <barcode-scanner-livestream-overlay type="code_128" (valueChanges)="onValueChanges($event)"></barcode-scanner-livestream-overlay>
+</div>
+
+<div class="barcode-value" [hidden]="!barcodeValue">
+  {{barcodeValue}}
+</div>
+

@@ -1,0 +1,40 @@
+.barcode-scanner-livestream-overlay {
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+
+    .barcode-scanner-livestream-overlay-content{
+        top: 50%;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        max-height: 90%;
+        max-width: 800px;
+
+        .barcode-scanner-livestream-overlay-close {
+            position: absolute;
+            right: 0;
+            padding: 0.5rem;
+            width: 2rem;
+            height: 2rem;
+            line-height: 2rem;
+            text-align: center;
+            background-color: white;
+            cursor: pointer;
+            border: 3px solid black;
+            font-size: 1.5rem;
+            margin: -1rem;
+            border-radius: 2rem;
+            z-index: 100;
+            box-sizing: content-box;
+        }
+
+    }
+}

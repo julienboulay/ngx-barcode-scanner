@@ -1,0 +1,40 @@
+{
+  "name": "ngx-barcode-scanner",
+  "version": "0.0.1",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/julienboulay/ngx-barcode-scanner.git"
+  },
+  "keywords": [
+    "angular",
+    "ngx",
+    "quagga",
+    "quaggajs",
+    "zxing",
+    "barcode",
+    "ean",
+    "code128",
+    "code39",
+    "codabar",
+    "i2of5",
+    "upc",
+    "getusermedia",
+    "imageprocessing"
+  ],
+  "peerDependencies": {
+    "@angular/common": "^5.2.7",
+    "@angular/core": "^5.2.7",
+    "@angular/forms": "^5.2.7",
+    "quagga": "^0.12.1"
+  },
+  "ngPackage": {
+    "lib": {
+      "entryFile": "public_api.ts",
+      "umdModuleIds": {
+        "Quagga": "Quagga"
+      }
+    },
+    "dest": "../dist"
+  }
+}

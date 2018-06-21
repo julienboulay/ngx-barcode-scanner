@@ -1,0 +1,13 @@
+.scanner {
+  position: relative;
+  video,
+  canvas {
+    max-width: 100%;
+    width: 100%;
+  }
+  canvas.drawingBuffer {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
