@@ -1,10 +1,10 @@
 # ngx-barcode-scanner component
 
 [![npm version](https://badge.fury.io/js/ngx-barcode-scanner.svg)](https://www.npmjs.com/ngx-barcode-scanner)
-[![devDependency Status](https://david-dm.org/ngx-barcode-scanner/dev-status.svg)](https://david-dm.org/ngx-barcode-scanner#info=devDependencies)
-[![GitHub issues](https://img.shields.io/github/issues/ngx-barcode-scanner.svg)](https://github.com/ngx-barcode-scanner/issues)
-[![GitHub stars](https://img.shields.io/github/stars/ngx-barcode-scanner.svg)](https://github.com/ngx-barcode-scanner/stargazers)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/ngx-barcode-scanner/master/LICENSE)
+[![devDependency Status](https://david-dm.org/julienboulay/ngx-barcode-scanner/dev-status.svg)](https://david-dm.org/julienboulay/ngx-barcode-scanner#info=devDependencies)
+[![GitHub issues](https://img.shields.io/github/issues/julienboulay/ngx-barcode-scanner.svg)](https://github.com/julienboulay/ngx-barcode-scanner/issues)
+[![GitHub stars](https://img.shields.io/github/stars/julienboulay/ngx-barcode-scanner.svg)](https://github.com/julienboulay/ngx-barcode-scanner/stargazers)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/julienboulay/ngx-barcode-scanner/master/LICENSE)
 
 ## Table of contents
 
