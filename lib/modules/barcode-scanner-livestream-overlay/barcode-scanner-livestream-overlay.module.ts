@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BarecodeScannerLivestreamOverlayComponent } from './barcode-scanner-livestream-overlay.component';
-import { BarecodeScannerLivestreamModule } from '../barcode-scanner-livestream';
+import { BarecodeScannerLivestreamModule } from '../barcode-scanner-livestream/barcode-scanner-livestream.module';
 
 @NgModule({
     imports: [

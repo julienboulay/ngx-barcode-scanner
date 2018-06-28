@@ -1,6 +1,6 @@
 {
   "name": "ngx-barcode-scanner",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -23,9 +23,9 @@
     "imageprocessing"
   ],
   "peerDependencies": {
-    "@angular/common": "^5.2.7",
-    "@angular/core": "^5.2.7",
-    "@angular/forms": "^5.2.7",
+    "@angular/common": "^6.0.0",
+    "@angular/core": "^6.0.0",
+    "@angular/forms": "^6.0.0",
     "quagga": "^0.12.1"
   },
   "ngPackage": {

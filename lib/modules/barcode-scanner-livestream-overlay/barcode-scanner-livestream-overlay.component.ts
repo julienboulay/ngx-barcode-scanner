@@ -17,21 +17,27 @@ export class BarecodeScannerLivestreamOverlayComponent implements OnDestroy{
     @ViewChild(BarecodeScannerLivestreamComponent)
     scanner: BarecodeScannerLivestreamComponent;
 
-    private showScanner = false;
+    private _showScanner = false;
 
+    get showScanner(){
+        return this._showScanner;
+    }
+    
     ngOnDestroy(){
         this.scanner.stop();
     }
 
     show() {
-        this.showScanner = true;
+        this._showScanner = true;
         this.scanner.start();
     }
 
     hide() {
-        this.showScanner = false;
+        this._showScanner = false;
         this.scanner.stop();
     }
+
+
 
     onValueChanges(result){
         this.valueChanges.next(result);
