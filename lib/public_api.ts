@@ -1,2 +1,2 @@
-export * from './modules/barcode-scanner-livestream/index';
-export * from './modules/barcode-scanner-livestream-overlay/index';
+export * from './modules/barcode-scanner-livestream';
+export * from './modules/barcode-scanner-livestream-overlay';
