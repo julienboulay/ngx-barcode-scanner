@@ -1,6 +1,6 @@
 {
   "name": "ngx-barcode-scanner",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -32,7 +32,7 @@
     "lib": {
       "entryFile": "public_api.ts",
       "umdModuleIds": {
-        "Quagga": "Quagga"
+        "quagga": "quagga"
       }
     },
     "dest": "../dist"
