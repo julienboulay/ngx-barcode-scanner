@@ -22,7 +22,7 @@
 
 Install through npm:
 ```
-npm install --save ngx-barcode-scanner
+npm install --save quagga ngx-barcode-scanner
 ```
 
 ## Usage
