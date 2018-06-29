@@ -1,7 +1,7 @@
 import {
     Component, Input, Output, EventEmitter, ViewChild, OnDestroy, ViewEncapsulation, OnChanges, SimpleChanges
 } from '@angular/core';
-import * as Quagga from 'Quagga';
+import * as Quagga from 'quagga';
 import { mapToReader } from './barcode-types';
 import { DEFAULT_CONFIG } from './barcode-scanner-livestream.config';
 
