@@ -115,6 +115,11 @@ The project can then be installed with `npm install <relative_dir>/dist/ngx-barc
 * Login to your npm account with `npm login`
 * Publish to npm repository with `npm run release`
 
+
+## Known issues
+
+Access to the camera is restricted on iOS when running in a Progressive Web App. Live streaming will not work in this case.
+
 ## License
 
 MIT
