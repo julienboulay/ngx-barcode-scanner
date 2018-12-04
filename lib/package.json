@@ -25,7 +25,6 @@
   "peerDependencies": {
     "@angular/common": "^6.0.0",
     "@angular/core": "^6.0.0",
-    "@angular/forms": "^6.0.0",
     "quagga": "^0.12.1"
   },
   "ngPackage": {

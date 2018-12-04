@@ -5,8 +5,7 @@ import { BarecodeScannerLivestreamComponent } from './barcode-scanner-livestream
 
 @NgModule({
     imports: [
-        CommonModule,
-        FormsModule
+        CommonModule
     ],
     declarations: [
         BarecodeScannerLivestreamComponent
