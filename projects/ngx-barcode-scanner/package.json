@@ -23,17 +23,8 @@
     "imageprocessing"
   ],
   "peerDependencies": {
-    "@angular/common": "^6.0.0",
-    "@angular/core": "^6.0.0",
+    "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
+    "@angular/core": "^6.0.0-rc.0 || ^6.0.0",
     "quagga": "^0.12.1"
-  },
-  "ngPackage": {
-    "lib": {
-      "entryFile": "public_api.ts",
-      "umdModuleIds": {
-        "quagga": "quagga"
-      }
-    },
-    "dest": "../dist"
   }
 }

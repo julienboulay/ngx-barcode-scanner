@@ -1,10 +1,10 @@
 import { TestBed, async } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { ModalModule } from 'ngx-bootstrap/modal';
+// import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { AppComponent } from './app.component';
-import { BarecodeScannerLivestreamComponent } from '../../lib/modules/barcode-scanner-livestream';
+import { BarecodeScannerLivestreamComponent } from 'ngx-barcode-scanner';
 
 describe('AppComponent', () => {
     beforeEach(async(() => {
@@ -16,7 +16,7 @@ describe('AppComponent', () => {
             imports: [
                 FormsModule,
                 HttpClientModule,
-                ModalModule.forRoot()
+                // ModalModule.forRoot()
             ]
         }).compileComponents();
     }));

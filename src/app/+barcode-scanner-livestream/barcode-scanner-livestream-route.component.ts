@@ -1,5 +1,5 @@
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
-import { BarecodeScannerLivestreamComponent } from '../../../lib/public_api';
+import { BarecodeScannerLivestreamComponent } from 'ngx-barcode-scanner';
 
 @Component({
     selector: 'app-barcode-scanner-livestream',
@@ -10,14 +10,14 @@ export class BarcodeScannerLivestreamRouteComponent implements AfterViewInit {
 
     @ViewChild(BarecodeScannerLivestreamComponent)
     BarecodeScanner: BarecodeScannerLivestreamComponent;
-    
+
     barcodeValue;
-    
+
     ngAfterViewInit() {
         this.BarecodeScanner.start();
     }
 
-    onValueChanges(value){
+    onValueChanges(value) {
         this.barcodeValue = value.code;
     }
 

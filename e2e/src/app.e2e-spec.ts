@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('ngx-barcode-scanner-components App', () => {
+describe('workspace-project App', () => {
   let page: AppPage;
 
   beforeEach(() => {
@@ -9,6 +9,6 @@ describe('ngx-barcode-scanner-components App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to the Initial components library for Angular !');
+    expect(page.getParagraphText()).toEqual('Welcome to ngx-barcode-scanner-app!');
   });
 });

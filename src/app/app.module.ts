@@ -3,8 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { BarecodeScannerLivestreamModule } from '../../lib/modules/barcode-scanner-livestream';
-import { BarecodeScannerLivestreamOverlayModule } from '../../lib/modules/barcode-scanner-livestream-overlay';
+import { BarecodeScannerLivestreamModule, BarecodeScannerLivestreamOverlayModule } from 'ngx-barcode-scanner';
 import { routing, appRoutingProviders } from './app.routes';
 import { BarcodeScannerLivestreamRouteComponent } from './+barcode-scanner-livestream';
 import { BarcodeScannerOverlayRouteComponent } from './+barcode-scanner-livestream-overlay';
