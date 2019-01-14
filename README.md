@@ -106,7 +106,7 @@ Run `npm run build` to build the project. The build artifacts will be stored in 
 ### Package
 
 Run `npm run package` to package the project.
-The project can then be installed with `npm install <relative_dir>/dist/ngx-barcode-scanner-<version>.tgz`
+The project can then be installed with `npm install <relative_dir>/dist/ngx-barcode-scanner/ngx-barcode-scanner-<version>.tgz`
 
 ### Release
 
