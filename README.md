@@ -70,16 +70,16 @@ import { BarecodeScannerLivestreamComponent } from 'ngx-barcode-scanner';
 export class Demo implements AfterViewInit{
     
     @ViewChild(BarecodeScannerLivestreamComponent)
-    BarecodeScanner: BarecodeScannerLivestreamComponent;
+    barecodeScanner: BarecodeScannerLivestreamComponent;
     
     barcodeValue;
     
     ngAfterViewInit() {
-        this.BarecodeScanner.start();
+        this.barecodeScanner.start();
     }
 
-    onValueChanges(value){
-        this.barcodeValue = value.code;
+    onValueChanges(result){
+        this.barcodeValue = result.codeResult.code;
     }
 }
 ```
@@ -88,7 +88,9 @@ export class Demo implements AfterViewInit{
 
 ### Development server
 
-Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Open a command line and run `ng build ngx-barcode-scanner --watch` for incremental build of the library
+
+Run `npm run start` for a dev server, on the example app. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ### Running unit tests
 

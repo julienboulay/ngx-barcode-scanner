@@ -18,7 +18,7 @@ export class BarecodeScannerLivestreamComponent implements OnChanges, OnDestroy 
     // Outputs
     @Output() valueChanges = new EventEmitter();
 
-    @ViewChild('BarecodeScanner') BarecodeScanner;
+    @ViewChild('BarecodeScanner') barecodeScanner;
 
     private started = false;
 
@@ -32,15 +32,15 @@ export class BarecodeScannerLivestreamComponent implements OnChanges, OnDestroy 
         this.retart();
     }
 
-    private _init(){
+    private _init() {
         return new Promise((resolve, reject) => {
             Quagga.onProcessed((result) => this.onProcessed(result));
-    
-            Quagga.onDetected((result) => this.onDetected(result));
-            
-            this.configQuagga.inputStream.target = this.BarecodeScanner.nativeElement;
 
-            if (this.type){
+            Quagga.onDetected((result) => this.onDetected(result));
+
+            this.configQuagga.inputStream.target = this.barecodeScanner.nativeElement;
+
+            if (this.type) {
                 this.configQuagga.decoder.readers = mapToReader(this.type);
             }
 
@@ -56,31 +56,33 @@ export class BarecodeScannerLivestreamComponent implements OnChanges, OnDestroy 
     }
 
     start() {
-        if (!this.started){
-            this._init().then(()=>{
+        if (!this.started) {
+            return this._init().then(() => {
                 Quagga.start();
                 this.started = true;
                 console.log('started')
             })
         }
+
+        return Promise.resolve();
     }
 
     stop() {
-        if (this.started){
+        if (this.started) {
             Quagga.stop();
             this.started = false;
             console.log('stopped')
         }
     }
 
-    retart(){
-        if (this.started){
+    retart() {
+        if (this.started) {
             this.stop();
             this.start();
         }
     }
 
-    isStarted(){
+    isStarted() {
         return this.started;
     }
 
@@ -128,8 +130,7 @@ export class BarecodeScannerLivestreamComponent implements OnChanges, OnDestroy 
     }
 
     onDetected(result) {
-        const code = result.codeResult.code
-        this.valueChanges.next({code});
+        this.valueChanges.next(result);
     }
 
 }

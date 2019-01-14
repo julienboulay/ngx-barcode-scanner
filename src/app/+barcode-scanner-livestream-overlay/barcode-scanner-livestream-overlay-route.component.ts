@@ -10,7 +10,7 @@ import { BarecodeScannerLivestreamOverlayComponent } from 'ngx-barcode-scanner';
 export class BarcodeScannerOverlayRouteComponent implements OnInit {
 
     @ViewChild(BarecodeScannerLivestreamOverlayComponent)
-    BarecodeScannerOverlay: BarecodeScannerLivestreamOverlayComponent;
+    barecodeScannerOverlay: BarecodeScannerLivestreamOverlayComponent;
 
     barcodeValue;
 
@@ -21,11 +21,11 @@ export class BarcodeScannerOverlayRouteComponent implements OnInit {
     }
 
     startBarecodeScannerOverlay() {
-        this.BarecodeScannerOverlay.show();
+        this.barecodeScannerOverlay.show();
     }
 
-    onValueChanges(value) {
-        this.barcodeValue = value.code;
+    onValueChanges(result) {
+        this.barcodeValue = result.codeResult.code;
     }
 
 }
