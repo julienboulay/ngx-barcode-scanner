@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { BarecodeScannerLivestreamOverlayComponent } from 'ngx-barcode-scanner';
 
 @Component({
@@ -7,18 +6,12 @@ import { BarecodeScannerLivestreamOverlayComponent } from 'ngx-barcode-scanner';
     templateUrl: './barcode-scanner-livestream-overlay-route.component.html',
     styleUrls: ['./barcode-scanner-livestream-overlay-route.component.scss']
 })
-export class BarcodeScannerOverlayRouteComponent implements OnInit {
+export class BarcodeScannerOverlayRouteComponent {
 
     @ViewChild(BarecodeScannerLivestreamOverlayComponent)
     barecodeScannerOverlay: BarecodeScannerLivestreamOverlayComponent;
 
-    barcodeValue;
-
-    constructor(private route: ActivatedRoute) {
-    }
-
-    ngOnInit() {
-    }
+    barcodeValue: string;
 
     startBarecodeScannerOverlay() {
         this.barecodeScannerOverlay.show();
@@ -28,4 +21,7 @@ export class BarcodeScannerOverlayRouteComponent implements OnInit {
         this.barcodeValue = result.codeResult.code;
     }
 
+    onStarted(event: boolean) {
+        console.log('started', event);
+    }
 }

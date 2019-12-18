@@ -1,5 +1,5 @@
 import {
-    Component, Input, Output, EventEmitter, ViewChild, OnDestroy, ViewEncapsulation, OnChanges, SimpleChanges
+    Component, Input, Output, ViewChild, OnDestroy, ViewEncapsulation, OnChanges, SimpleChanges, EventEmitter
 } from '@angular/core';
 import * as Quagga from 'quagga';
 import { mapToReader } from './barcode-types';
@@ -18,9 +18,15 @@ export class BarecodeScannerLivestreamComponent implements OnChanges, OnDestroy 
     // Outputs
     @Output() valueChanges = new EventEmitter();
 
+    @Output() started = new EventEmitter();
+
     @ViewChild('BarecodeScanner') barecodeScanner;
 
-    private started = false;
+    private _started = false;
+
+    get isStarted() {
+        return this._started;
+    }
 
     private configQuagga = DEFAULT_CONFIG;
 
@@ -29,7 +35,7 @@ export class BarecodeScannerLivestreamComponent implements OnChanges, OnDestroy 
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        this.retart();
+        this.restart();
     }
 
     private _init() {
@@ -55,40 +61,33 @@ export class BarecodeScannerLivestreamComponent implements OnChanges, OnDestroy 
         });
     }
 
-    start() {
-        if (!this.started) {
-            return this._init().then(() => {
-                Quagga.start();
-                this.started = true;
-                console.log('started')
-            })
+    async start() {
+        if (!this._started) {
+            await this._init();
+            Quagga.start();
+            this._started = true;
+            this.started.next(true);
         }
-
-        return Promise.resolve();
     }
 
     stop() {
-        if (this.started) {
+        if (this._started) {
             Quagga.stop();
-            this.started = false;
-            console.log('stopped')
+            this._started = false;
+            this.started.next(false);
         }
     }
 
-    retart() {
-        if (this.started) {
+    restart() {
+        if (this._started) {
             this.stop();
             this.start();
         }
     }
 
-    isStarted() {
-        return this.started;
-    }
-
     onProcessed(result: any): any {
-        let drawingCtx = Quagga.canvas.ctx.overlay,
-            drawingCanvas = Quagga.canvas.dom.overlay;
+        const drawingCtx = Quagga.canvas.ctx.overlay,
+              drawingCanvas = Quagga.canvas.dom.overlay;
 
         if (result) {
             if (result.boxes) {

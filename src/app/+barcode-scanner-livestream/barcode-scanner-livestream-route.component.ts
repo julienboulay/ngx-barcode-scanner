@@ -21,4 +21,8 @@ export class BarcodeScannerLivestreamRouteComponent implements AfterViewInit {
         this.barcodeValue = result.codeResult.code;
     }
 
+    onStarted(event) {
+        console.log('started', event);
+    }
+
 }

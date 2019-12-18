@@ -21,7 +21,8 @@
 ## Installation
 
 Install through npm:
-```
+
+```bash
 npm install --save quagga ngx-barcode-scanner
 ```
 
@@ -50,7 +51,7 @@ export class DemoModule {}
 
 ### BarcodeScannerLivestreamComponent
 
-This component creates a barcode scanner 
+This component creates a barcode scanner.
 
 ```typescript
 //demo.component.ts
@@ -61,25 +62,29 @@ import { BarecodeScannerLivestreamComponent } from 'ngx-barcode-scanner';
 @Component({
   selector: 'demo-app',
   template: `
-    <barcode-scanner-livestream type="code_128" (valueChanges)="onValueChanges($event)"></barcode-scanner-livestream>
+    <barcode-scanner-livestream type="code_128" (valueChanges)="onValueChanges($event)" (started)="onStarted"></barcode-scanner-livestream>
     <div [hidden]="!barcodeValue">
         {{barcodeValue}}
     </div>
   `
 })
 export class Demo implements AfterViewInit{
-    
+
     @ViewChild(BarecodeScannerLivestreamComponent)
     barecodeScanner: BarecodeScannerLivestreamComponent;
-    
+
     barcodeValue;
-    
+
     ngAfterViewInit() {
         this.barecodeScanner.start();
     }
 
     onValueChanges(result){
         this.barcodeValue = result.codeResult.code;
+    }
+
+    onStarted(started){
+        console.log(started);
     }
 }
 ```
@@ -92,15 +97,6 @@ Open a command line and run `ng build ngx-barcode-scanner --watch` for increment
 
 Run `npm run start` for a dev server, on the example app. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-### Running unit tests
-
-Run `npm run test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-### Running end-to-end tests
-
-Run `npm run e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
 ### Build
 
 Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
@@ -112,11 +108,10 @@ The project can then be installed with `npm install <relative_dir>/dist/ngx-barc
 
 ### Release
 
-* Bump the version in package.json
-* Commit and push to github
-* Login to your npm account with `npm login`
-* Publish to npm repository with `npm run release`
-
+- Bump the version in package.json
+- Commit and push to github
+- Login to your npm account with `npm login`
+- Publish to npm repository with `npm run release`
 
 ## Known issues
 

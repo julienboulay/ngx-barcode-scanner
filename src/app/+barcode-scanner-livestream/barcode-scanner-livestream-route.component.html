@@ -1,5 +1,5 @@
 <div class="barcode-scanner-container">
-  <barcode-scanner-livestream type="code_128" (valueChanges)="onValueChanges($event)"></barcode-scanner-livestream>
+  <barcode-scanner-livestream type="code_128" (valueChanges)="onValueChanges($event)" (started)="onStarted($event)"></barcode-scanner-livestream>
 </div>
 
 <div class="barcode-value" [hidden]="!barcodeValue">

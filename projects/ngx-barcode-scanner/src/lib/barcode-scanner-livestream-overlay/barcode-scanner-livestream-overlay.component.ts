@@ -1,5 +1,5 @@
 import {
-    Component, Input, Output, EventEmitter, ViewChild, OnDestroy
+    Component, Input, Output, ViewChild, OnDestroy, EventEmitter
 } from '@angular/core';
 import { BarecodeScannerLivestreamComponent } from '../barcode-scanner-livestream/barcode-scanner-livestream.component';
 
@@ -8,11 +8,20 @@ import { BarecodeScannerLivestreamComponent } from '../barcode-scanner-livestrea
     templateUrl: './barcode-scanner-livestream-overlay.component.html',
     styleUrls: ['./barcode-scanner-livestream-overlay.component.scss'],
 })
-export class BarecodeScannerLivestreamOverlayComponent implements OnDestroy{
+export class BarecodeScannerLivestreamOverlayComponent implements OnDestroy {
+
+    private _started = false;
+
+    get isStarted() {
+        return this._started;
+    }
+
     // Inputs
     @Input() type: string;
 
     @Output() valueChanges = new EventEmitter();
+
+    @Output() started = new EventEmitter();
 
     @ViewChild(BarecodeScannerLivestreamComponent)
     scanner: BarecodeScannerLivestreamComponent;
@@ -22,7 +31,7 @@ export class BarecodeScannerLivestreamOverlayComponent implements OnDestroy{
     get showScanner(){
         return this._showScanner;
     }
-    
+
     ngOnDestroy(){
         this.scanner.stop();
     }
@@ -37,7 +46,10 @@ export class BarecodeScannerLivestreamOverlayComponent implements OnDestroy{
         this.scanner.stop();
     }
 
-
+    onStarted(value: boolean) {
+        this._started = value;
+        this.started.next(value);
+    }
 
     onValueChanges(result){
         this.valueChanges.next(result);
