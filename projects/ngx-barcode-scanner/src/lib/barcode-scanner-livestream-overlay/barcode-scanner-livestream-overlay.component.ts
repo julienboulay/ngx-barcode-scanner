@@ -17,7 +17,7 @@ export class BarecodeScannerLivestreamOverlayComponent implements OnDestroy {
     }
 
     // Inputs
-    @Input() type: string;
+    @Input() type: string | string[];
 
     @Input() deviceId: string;
 

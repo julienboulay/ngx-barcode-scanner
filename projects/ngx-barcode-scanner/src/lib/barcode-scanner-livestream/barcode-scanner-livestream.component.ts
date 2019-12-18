@@ -13,7 +13,7 @@ import { DEFAULT_CONFIG, QuaggaConfig } from './barcode-scanner-livestream.confi
 })
 export class BarecodeScannerLivestreamComponent implements OnChanges, OnDestroy {
     // Inputs
-    @Input() type: string;
+    @Input() type: string | string[];
 
     @Input() deviceId: string;
 
