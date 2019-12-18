@@ -5,12 +5,14 @@
             true,
             "attribute",
             "lib",
+            "barcode-scanner",
             "camelCase"
         ],
         "component-selector": [
             true,
             "element",
             "lib",
+            "barcode-scanner",
             "kebab-case"
         ]
     }
