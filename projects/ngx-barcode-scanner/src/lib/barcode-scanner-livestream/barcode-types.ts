@@ -11,7 +11,7 @@ export const BARCODE_TYPES = [
     'i2of5',
     '2of5',
     'code_93'
-]
+];
 
 export function mapToReader(value) {
     return [ value + '_reader' ];
