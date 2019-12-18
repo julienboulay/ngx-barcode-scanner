@@ -20,4 +20,29 @@ export const DEFAULT_CONFIG = {
     decoder: {
         readers: ['code_128_reader']
     }
-};
+} as QuaggaConfig;
+
+export interface QuaggaConfig {
+    inputStream: {
+        name: string,
+        type: string,
+        target: any,
+        constraints: {
+            width: { min: number },
+            height: { min: number },
+            aspectRatio: { min: number, max: number },
+            facingMode: string, // or user
+            deviceId: string
+        },
+        singleChannel: boolean // true: only the red color-channel is read
+    };
+    locator: {
+        patchSize: string,
+        halfSample: boolean
+    };
+    locate: boolean;
+    numOfWorkers: number;
+    decoder: {
+        readers: string[]
+    };
+}

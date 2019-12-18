@@ -3,7 +3,7 @@ import {
 } from '@angular/core';
 import * as Quagga from 'quagga';
 import { mapToReader } from './barcode-types';
-import { DEFAULT_CONFIG } from './barcode-scanner-livestream.config';
+import { DEFAULT_CONFIG, QuaggaConfig } from './barcode-scanner-livestream.config';
 
 @Component({
     selector: 'barcode-scanner-livestream',
@@ -14,6 +14,8 @@ import { DEFAULT_CONFIG } from './barcode-scanner-livestream.config';
 export class BarecodeScannerLivestreamComponent implements OnChanges, OnDestroy {
     // Inputs
     @Input() type: string;
+
+    @Input() deviceId: string;
 
     // Outputs
     @Output() valueChanges = new EventEmitter();
@@ -28,7 +30,7 @@ export class BarecodeScannerLivestreamComponent implements OnChanges, OnDestroy 
         return this._started;
     }
 
-    private configQuagga = DEFAULT_CONFIG;
+    private configQuagga: QuaggaConfig = DEFAULT_CONFIG;
 
     ngOnDestroy(): void {
         this.stop();
@@ -48,6 +50,10 @@ export class BarecodeScannerLivestreamComponent implements OnChanges, OnDestroy 
 
             if (this.type) {
                 this.configQuagga.decoder.readers = mapToReader(this.type);
+            }
+
+            if (this.deviceId) {
+                this.configQuagga.inputStream.constraints.deviceId = this.deviceId;
             }
 
             Quagga.init(this.configQuagga, (err) => {
