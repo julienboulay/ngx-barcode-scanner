@@ -16,7 +16,7 @@
 
 ## Demo
 
-_Coming soon..._
+A simple démo is available [here](https://julienboulay.github.io/ngx-barcode-scanner)
 
 ## Installation
 
@@ -101,6 +101,17 @@ Run `npm run build` to build the project. The build artifacts will be stored in 
 ## Known issues
 
 Access to the camera is restricted on iOS when running in a Progressive Web App. Live streaming will not work in this case.
+
+## FAQ
+
+### Which types of barcode are supported ?
+
+All barcode types supported by [quaggajs](https://serratus.github.io/quaggaJS/)
+
+### Does ngx-barcode-scanner support scanning QR Codes ?
+
+No,
+ngx-barcode-scanner is based on [quaggajs](https://serratus.github.io/quaggaJS/), and it can not support qr-code.
 
 ## License
 
