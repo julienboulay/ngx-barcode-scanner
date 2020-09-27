@@ -32,40 +32,18 @@
         2 components to read barcode with a camera in a livestream :
         <ul>
           <li>
-            <a href="#" (click)="toggleLiveStream()"
-              >barcode-scanner-livestream</a
-            >: a simple livestream component, that can be integrated in any page
-            or component
+            <a routerLink="livestream">barcode-scanner-livestream</a>: a simple
+            livestream component, that can be integrated in any page or
+            component
           </li>
           <li>
-            <a href="#" (click)="startBarecodeScannerOverlay()"
+            <a routerLink="livestream-overlay"
               >barcode-scanner-livestream-overlay</a
             >: an overlay livestream component
           </li>
         </ul>
       </div>
-      <div [hidden]="!displaySingle">
-        <div class="barcode-scanner-container">
-          <barcode-scanner-livestream
-            [type]="['code_128', 'code_39', 'ean_8']"
-            (valueChanges)="onValueChanges($event)"
-            (started)="onStarted($event)"
-          ></barcode-scanner-livestream>
-        </div>
-      </div>
+      <router-outlet></router-outlet>
     </main>
   </div>
-  <div class="row" *ngIf="barcodeValue">
-    <div class="col-12">
-      <div class="alert alert-primary" role="alert">
-        Latest barcode value : {{ barcodeValue }}
-      </div>
-    </div>
-  </div>
 </div>
-
-<barcode-scanner-livestream-overlay
-  [type]="['code_128', 'code_39', 'ean_8']"
-  (valueChanges)="onValueChanges($event)"
-  (started)="onStarted($event)"
-></barcode-scanner-livestream-overlay>
