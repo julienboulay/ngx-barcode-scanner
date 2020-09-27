@@ -13,6 +13,9 @@ MIT
 @angular/platform-browser
 MIT
 
+@angular/router
+MIT
+
 bootstrap
 MIT
 The MIT License (MIT)
