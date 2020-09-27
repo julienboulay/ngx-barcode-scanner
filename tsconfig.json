@@ -5,24 +5,15 @@
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
+    "downlevelIteration": true,
     "experimentalDecorators": true,
-    "target": "es5",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2017",
-      "dom"
-    ],
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "es2020",
+    "lib": ["es2018", "dom"],
     "paths": {
-      "ngx-barcode-scanner": [
-        "dist/ngx-barcode-scanner"
-      ],
-      "ngx-barcode-scanner/*": [
-        "dist/ngx-barcode-scanner/*"
-      ]
+      "ngx-barcode-scanner": ["projects/ngx-barcode-scanner/src/public-api.ts"]
     }
   }
 }

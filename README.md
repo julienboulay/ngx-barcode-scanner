@@ -16,7 +16,7 @@
 
 ## Demo
 
-*Coming soon...*
+_Coming soon..._
 
 ## Installation
 
@@ -32,19 +32,16 @@ npm install --save quagga ngx-barcode-scanner
 
 ```typescript
 //demo.module.ts
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
 
-import { BarecodeScannerLivestreamModule } from 'ngx-barcode-scanner';
-import { Demo } from './demo.component';
+import { BarecodeScannerLivestreamModule } from "ngx-barcode-scanner";
+import { Demo } from "./demo.component";
 
 @NgModule({
-    declarations: [Demo],
-    imports: [
-        BrowserModule,
-        BarecodeScannerLivestreamModule
-    ],
-    bootstrap: [Demo]
+  declarations: [Demo],
+  imports: [BrowserModule, BarecodeScannerLivestreamModule],
+  bootstrap: [Demo],
 })
 export class DemoModule {}
 ```
@@ -55,37 +52,39 @@ This component creates a barcode scanner.
 
 ```typescript
 //demo.component.ts
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
-import { BarecodeScannerLivestreamComponent } from 'ngx-barcode-scanner';
-
+import { Component, ViewChild, AfterViewInit } from "@angular/core";
+import { BarecodeScannerLivestreamComponent } from "ngx-barcode-scanner";
 
 @Component({
-  selector: 'demo-app',
+  selector: "demo-app",
   template: `
-    <barcode-scanner-livestream type="code_128" (valueChanges)="onValueChanges($event)" (started)="onStarted"></barcode-scanner-livestream>
+    <barcode-scanner-livestream
+      type="code_128"
+      (valueChanges)="onValueChanges($event)"
+      (started)="(onStarted)"
+    ></barcode-scanner-livestream>
     <div [hidden]="!barcodeValue">
-        {{barcodeValue}}
+      {{ barcodeValue }}
     </div>
-  `
+  `,
 })
-export class Demo implements AfterViewInit{
+export class Demo implements AfterViewInit {
+  @ViewChild(BarecodeScannerLivestreamComponent)
+  barecodeScanner: BarecodeScannerLivestreamComponent;
 
-    @ViewChild(BarecodeScannerLivestreamComponent)
-    barecodeScanner: BarecodeScannerLivestreamComponent;
+  barcodeValue;
 
-    barcodeValue;
+  ngAfterViewInit() {
+    this.barecodeScanner.start();
+  }
 
-    ngAfterViewInit() {
-        this.barecodeScanner.start();
-    }
+  onValueChanges(result) {
+    this.barcodeValue = result.codeResult.code;
+  }
 
-    onValueChanges(result){
-        this.barcodeValue = result.codeResult.code;
-    }
-
-    onStarted(started){
-        console.log(started);
-    }
+  onStarted(started) {
+    console.log(started);
+  }
 }
 ```
 
@@ -93,25 +92,11 @@ export class Demo implements AfterViewInit{
 
 ### Development server
 
-Open a command line and run `ng build ngx-barcode-scanner --watch` for incremental build of the library
-
-Run `npm run start` for a dev server, on the example app. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve` or `npm run start` for a dev server, on the example app. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ### Build
 
 Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-### Package
-
-Run `npm run package` to package the project.
-The project can then be installed with `npm install <relative_dir>/dist/ngx-barcode-scanner/ngx-barcode-scanner-<version>.tgz`
-
-### Release
-
-- Bump the version in package.json
-- Commit and push to github
-- Login to your npm account with `npm login`
-- Publish to npm repository with `npm run release`
 
 ## Known issues
 
