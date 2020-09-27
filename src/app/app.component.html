@@ -1,5 +1,71 @@
-<div>
-  <a routerLink="livestream">Test Codebar Scanner</a>
-  <a routerLink="livestream-overlay">Test Codebar Scanner overlay</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="#">ngx-barcode-scanner</a>
+    <button
+      class="navbar-toggler collapsed"
+      (click)="isCollapsed = !isCollapsed"
+      aria-expanded="false"
+      type="button"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" [collapse]="isCollapsed">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#"
+            >Demo <span class="sr-only">(current)</span></a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <main class="col-12 py-md-3 pl-md-5">
+      <h1>About</h1>
+      <div>
+        ngx-barcode-scanner is an Angular wrapper for
+        <a href="https://serratus.github.io/quaggaJS/">quaggajs</a>. It provides
+        2 components to read barcode with a camera in a livestream :
+        <ul>
+          <li>
+            <a href="#" (click)="toggleLiveStream()"
+              >barcode-scanner-livestream</a
+            >: a simple livestream component, that can be integrated in any page
+            or component
+          </li>
+          <li>
+            <a href="#" (click)="startBarecodeScannerOverlay()"
+              >barcode-scanner-livestream-overlay</a
+            >: an overlay livestream component
+          </li>
+        </ul>
+      </div>
+      <div [hidden]="!displaySingle">
+        <div class="barcode-scanner-container">
+          <barcode-scanner-livestream
+            [type]="['code_128', 'code_39', 'ean_8']"
+            (valueChanges)="onValueChanges($event)"
+            (started)="onStarted($event)"
+          ></barcode-scanner-livestream>
+        </div>
+      </div>
+    </main>
+  </div>
+  <div class="row" *ngIf="barcodeValue">
+    <div class="col-12">
+      <div class="alert alert-primary" role="alert">
+        Latest barcode value : {{ barcodeValue }}
+      </div>
+    </div>
+  </div>
 </div>
-<router-outlet></router-outlet>
+
+<barcode-scanner-livestream-overlay
+  [type]="['code_128', 'code_39', 'ean_8']"
+  (valueChanges)="onValueChanges($event)"
+  (started)="onStarted($event)"
+></barcode-scanner-livestream-overlay>
