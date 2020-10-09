@@ -1,9 +1,9 @@
 import {
-    Component, Input, Output, ViewChild, OnDestroy, ViewEncapsulation, OnChanges, SimpleChanges, EventEmitter
+    Component, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, Output, SimpleChanges, ViewChild, ViewEncapsulation
 } from '@angular/core';
 import * as Quagga from 'quagga';
-import { mapToReader } from './barcode-types';
 import { DEFAULT_CONFIG, QuaggaConfig } from './barcode-scanner-livestream.config';
+import { mapToReader } from './barcode-types';
 
 @Component({
     selector: 'barcode-scanner-livestream',
@@ -22,11 +22,11 @@ export class BarecodeScannerLivestreamComponent implements OnChanges, OnDestroy 
 
     @Output() started = new EventEmitter();
 
-    @ViewChild('BarecodeScanner') barecodeScanner;
+    @ViewChild('BarecodeScanner') barecodeScanner: ElementRef;
 
     private _started = false;
 
-    get isStarted() {
+    get isStarted(): boolean {
         return this._started;
     }
 
@@ -36,11 +36,11 @@ export class BarecodeScannerLivestreamComponent implements OnChanges, OnDestroy 
         this.stop();
     }
 
-    ngOnChanges(changes: SimpleChanges) {
+    ngOnChanges(changes: SimpleChanges): void {
         this.restart();
     }
 
-    private _init() {
+    private _init(): Promise<void> {
         return new Promise((resolve, reject) => {
             Quagga.onProcessed((result) => this.onProcessed(result));
 
@@ -67,7 +67,7 @@ export class BarecodeScannerLivestreamComponent implements OnChanges, OnDestroy 
         });
     }
 
-    async start() {
+    async start(): Promise<void> {
         if (!this._started) {
             await this._init();
             Quagga.start();
@@ -76,7 +76,7 @@ export class BarecodeScannerLivestreamComponent implements OnChanges, OnDestroy 
         }
     }
 
-    stop() {
+    stop(): void {
         if (this._started) {
             Quagga.stop();
             this._started = false;
@@ -84,7 +84,7 @@ export class BarecodeScannerLivestreamComponent implements OnChanges, OnDestroy 
         }
     }
 
-    restart() {
+    restart(): void {
         if (this._started) {
             this.stop();
             this.start();
@@ -92,24 +92,24 @@ export class BarecodeScannerLivestreamComponent implements OnChanges, OnDestroy 
     }
 
     onProcessed(result: any): any {
-        const drawingCtx = Quagga.canvas.ctx.overlay,
-              drawingCanvas = Quagga.canvas.dom.overlay;
+        const drawingCtx = Quagga.canvas.ctx.overlay;
+        const drawingCanvas = Quagga.canvas.dom.overlay;
 
         if (result) {
             if (result.boxes) {
                 drawingCtx.clearRect(0, 0,
                     parseInt(drawingCanvas.getAttribute('width'), 10),
                     parseInt(drawingCanvas.getAttribute('height'), 10));
-                result.boxes.filter(function (box) {
+                result.boxes.filter((box: any) => {
                     return box !== result.box;
-                }).forEach(function (box) {
+                }).forEach((box: any) => {
                     Quagga.ImageDebug.drawPath(box, {
                         x: 0,
                         y: 1,
                     }, drawingCtx, {
-                            color: 'green',
-                            lineWidth: 2,
-                        });
+                        color: 'green',
+                        lineWidth: 2,
+                    });
                 });
             }
 
@@ -118,9 +118,9 @@ export class BarecodeScannerLivestreamComponent implements OnChanges, OnDestroy 
                     x: 0,
                     y: 1,
                 }, drawingCtx, {
-                        color: '#00F',
-                        lineWidth: 2,
-                    });
+                    color: '#00F',
+                    lineWidth: 2,
+                });
             }
 
             if (result.codeResult && result.codeResult.code) {
@@ -128,15 +128,15 @@ export class BarecodeScannerLivestreamComponent implements OnChanges, OnDestroy 
                     x: 'x',
                     y: 'y',
                 }, drawingCtx, {
-                        color: 'red',
-                        lineWidth: 3,
-                    });
+                    color: 'red',
+                    lineWidth: 3,
+                });
             }
 
         }
     }
 
-    onDetected(result) {
+    onDetected(result): void {
         this.valueChanges.next(result);
     }
 
