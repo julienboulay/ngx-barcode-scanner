@@ -1,6 +1,7 @@
 import {
     Component, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, Output, SimpleChanges, ViewChild, ViewEncapsulation
 } from '@angular/core';
+import defaultsDeep from 'lodash.defaultsdeep';
 import * as Quagga from 'quagga';
 import { DEFAULT_CONFIG, QuaggaConfig } from './barcode-scanner-livestream.config';
 import { mapToReader } from './barcode-types';
@@ -17,6 +18,8 @@ export class BarecodeScannerLivestreamComponent implements OnChanges, OnDestroy 
 
     @Input() deviceId: string;
 
+    @Input() config: QuaggaConfig;
+
     // Outputs
     @Output() valueChanges = new EventEmitter();
 
@@ -30,7 +33,7 @@ export class BarecodeScannerLivestreamComponent implements OnChanges, OnDestroy 
         return this._started;
     }
 
-    private configQuagga: QuaggaConfig = DEFAULT_CONFIG;
+    private configQuagga: QuaggaConfig;
 
     ngOnDestroy(): void {
         this.stop();
@@ -45,6 +48,8 @@ export class BarecodeScannerLivestreamComponent implements OnChanges, OnDestroy 
             Quagga.onProcessed((result) => this.onProcessed(result));
 
             Quagga.onDetected((result) => this.onDetected(result));
+
+            this.configQuagga = defaultsDeep({}, this.config, DEFAULT_CONFIG);
 
             this.configQuagga.inputStream.target = this.barecodeScanner.nativeElement;
 

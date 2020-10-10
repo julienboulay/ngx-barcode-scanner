@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { BarecodeScannerLivestreamOverlayComponent } from 'ngx-barcode-scanner';
 
 @Component({
@@ -13,15 +13,15 @@ export class BarcodeScannerOverlayRouteComponent {
 
     barcodeValue: string;
 
-    startBarecodeScannerOverlay() {
+    startBarecodeScannerOverlay(): void {
         this.barecodeScannerOverlay.show();
     }
 
-    onValueChanges(result) {
+    onValueChanges(result): void {
         this.barcodeValue = result.codeResult.code;
     }
 
-    onStarted(event: boolean) {
+    onStarted(event: boolean): void {
         console.log('started', event);
     }
 }

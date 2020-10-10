@@ -2,6 +2,7 @@ import {
     Component, EventEmitter, Input, OnDestroy, Output, ViewChild
 } from '@angular/core';
 import { BarecodeScannerLivestreamComponent } from '../barcode-scanner-livestream/barcode-scanner-livestream.component';
+import { QuaggaConfig } from '../barcode-scanner-livestream/barcode-scanner-livestream.config';
 
 @Component({
     selector: 'barcode-scanner-livestream-overlay',
@@ -20,6 +21,8 @@ export class BarecodeScannerLivestreamOverlayComponent implements OnDestroy {
     @Input() type: string | string[];
 
     @Input() deviceId: string;
+
+    @Input() config: QuaggaConfig;
 
     @Output() valueChanges = new EventEmitter<string>();
 
