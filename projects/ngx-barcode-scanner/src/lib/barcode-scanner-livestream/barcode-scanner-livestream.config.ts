@@ -6,7 +6,7 @@ export const DEFAULT_CONFIG = {
         constraints: {
             width: { min: 640 },
             height: { min: 480 },
-            aspectRatio: { min: 1, max: 1 },
+            aspectRatio: { min: 1, max: 2 },
             facingMode: 'environment', // or user
         },
         singleChannel: false // true: only the red color-channel is read
