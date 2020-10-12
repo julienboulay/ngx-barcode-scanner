@@ -1,6 +1,6 @@
 {
   "name": "ngx-barcode-scanner",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -28,6 +28,7 @@
     "quagga": "^0.12.1"
   },
   "dependencies": {
-    "tslib": "^2.0.0"
+    "tslib": "^2.0.0",
+    "lodash.defaultsdeep": "^4.6.1"
   }
 }

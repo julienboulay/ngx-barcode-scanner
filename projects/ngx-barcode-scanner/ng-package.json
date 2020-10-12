@@ -3,5 +3,9 @@
   "dest": "../../dist/ngx-barcode-scanner",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "whitelistedNonPeerDependencies": [
+    "tslib",
+    "lodash.defaultsdeep"
+  ]
 }
