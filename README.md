@@ -100,7 +100,7 @@ Run `npm run build` to build the project. The build artifacts will be stored in 
 
 ## Known issues
 
-Access to the camera is restricted on iOS when running in a Progressive Web App. Live streaming will not work in this case.
+Access to the camera (getUserMedia API) is restricted on iOS when running in a Progressive Web App or in browsers different than Safari. Live streaming will not work in this case.
 
 ## FAQ
 
