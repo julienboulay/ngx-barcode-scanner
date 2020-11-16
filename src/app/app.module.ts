@@ -3,8 +3,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
-  BarecodeScannerLivestreamModule,
-  BarecodeScannerLivestreamOverlayModule,
+  BarcodeScannerLivestreamModule,
+  BarcodeScannerLivestreamOverlayModule
 } from 'ngx-barcode-scanner';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { AppRoutingModule } from './app-routing.module';
@@ -23,12 +23,12 @@ import { BarcodeScannerOverlayRouteComponent } from './barcode-scanner-livestrea
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    BarecodeScannerLivestreamModule,
-    BarecodeScannerLivestreamOverlayModule,
+    BarcodeScannerLivestreamModule,
+    BarcodeScannerLivestreamOverlayModule,
     BrowserAnimationsModule,
     CollapseModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

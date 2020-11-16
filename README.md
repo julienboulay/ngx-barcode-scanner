@@ -35,12 +35,12 @@ npm install --save quagga ngx-barcode-scanner
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 
-import { BarecodeScannerLivestreamModule } from "ngx-barcode-scanner";
+import { BarcodeScannerLivestreamModule } from "ngx-barcode-scanner";
 import { Demo } from "./demo.component";
 
 @NgModule({
   declarations: [Demo],
-  imports: [BrowserModule, BarecodeScannerLivestreamModule],
+  imports: [BrowserModule, BarcodeScannerLivestreamModule],
   bootstrap: [Demo],
 })
 export class DemoModule {}
@@ -53,7 +53,7 @@ This component creates a barcode scanner.
 ```typescript
 //demo.component.ts
 import { Component, ViewChild, AfterViewInit } from "@angular/core";
-import { BarecodeScannerLivestreamComponent } from "ngx-barcode-scanner";
+import { BarcodeScannerLivestreamComponent } from "ngx-barcode-scanner";
 
 @Component({
   selector: "demo-app",
@@ -69,13 +69,13 @@ import { BarecodeScannerLivestreamComponent } from "ngx-barcode-scanner";
   `,
 })
 export class Demo implements AfterViewInit {
-  @ViewChild(BarecodeScannerLivestreamComponent)
-  barecodeScanner: BarecodeScannerLivestreamComponent;
+  @ViewChild(BarcodeScannerLivestreamComponent)
+  barcodeScanner: BarcodeScannerLivestreamComponent;
 
   barcodeValue;
 
   ngAfterViewInit() {
-    this.barecodeScanner.start();
+    this.barcodeScanner.start();
   }
 
   onValueChanges(result) {

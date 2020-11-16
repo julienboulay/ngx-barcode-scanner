@@ -1,19 +1,19 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BarecodeScannerLivestreamOverlayComponent } from './barcode-scanner-livestream-overlay.component';
-import { BarecodeScannerLivestreamModule } from '../barcode-scanner-livestream/barcode-scanner-livestream.module';
+import { NgModule } from '@angular/core';
+import { BarcodeScannerLivestreamModule } from '../barcode-scanner-livestream/barcode-scanner-livestream.module';
+import { BarcodeScannerLivestreamOverlayComponent } from './barcode-scanner-livestream-overlay.component';
 
 @NgModule({
     imports: [
         CommonModule,
-        BarecodeScannerLivestreamModule
+        BarcodeScannerLivestreamModule
     ],
     declarations: [
-        BarecodeScannerLivestreamOverlayComponent
+        BarcodeScannerLivestreamOverlayComponent
     ],
     exports: [
-        BarecodeScannerLivestreamOverlayComponent
+        BarcodeScannerLivestreamOverlayComponent
     ]
 })
-export class BarecodeScannerLivestreamOverlayModule { }
+export class BarcodeScannerLivestreamOverlayModule { }
 

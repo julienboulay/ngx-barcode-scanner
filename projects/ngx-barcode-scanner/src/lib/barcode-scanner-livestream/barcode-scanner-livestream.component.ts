@@ -12,7 +12,7 @@ import { mapToReader } from './barcode-types';
     styleUrls: ['./barcode-scanner-livestream.component.scss'],
     encapsulation: ViewEncapsulation.None,
 })
-export class BarecodeScannerLivestreamComponent implements OnChanges, OnDestroy {
+export class BarcodeScannerLivestreamComponent implements OnChanges, OnDestroy {
     // Inputs
     @Input() type: string | string[];
 
@@ -25,7 +25,7 @@ export class BarecodeScannerLivestreamComponent implements OnChanges, OnDestroy 
 
     @Output() started = new EventEmitter();
 
-    @ViewChild('BarecodeScanner') barecodeScanner: ElementRef;
+    @ViewChild('BarcodeScanner') barcodeScanner: ElementRef;
 
     private _started = false;
 
@@ -51,7 +51,7 @@ export class BarecodeScannerLivestreamComponent implements OnChanges, OnDestroy 
 
             this.configQuagga = defaultsDeep({}, this.config, DEFAULT_CONFIG);
 
-            this.configQuagga.inputStream.target = this.barecodeScanner.nativeElement;
+            this.configQuagga.inputStream.target = this.barcodeScanner.nativeElement;
 
             if (this.type) {
                 this.configQuagga.decoder.readers = mapToReader(this.type);
