@@ -1,1 +1,14 @@
-<div #BarcodeScanner class="scanner" [hidden]="!isStarted"></div>
+<div
+  #BarcodeScanner
+  class="scanner"
+  [hidden]="!isStarted"
+  [style.height]="_height"
+  [style.width]="_width"
+>
+  <video [style.height]="_height" [style.width]="_width"></video>
+  <canvas
+    [style.height]="_height"
+    [style.width]="_width"
+    class="drawingBuffer"
+  ></canvas>
+</div>

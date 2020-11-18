@@ -22,6 +22,10 @@ export class BarcodeScannerLivestreamOverlayComponent implements OnDestroy {
 
     @Input() deviceId: string;
 
+    @Input() width: string;
+
+    @Input() height: string;
+
     @Input() config: QuaggaConfig;
 
     @Output() valueChanges = new EventEmitter<string>();

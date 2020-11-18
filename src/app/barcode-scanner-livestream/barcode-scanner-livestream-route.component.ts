@@ -11,7 +11,7 @@ export class BarcodeScannerLivestreamRouteComponent implements AfterViewInit {
     @ViewChild(BarcodeScannerLivestreamComponent)
     barcodeScanner: BarcodeScannerLivestreamComponent;
 
-    barcodeValue;
+    barcodeValue: string;
 
     ngAfterViewInit(): void {
         this.barcodeScanner.start();

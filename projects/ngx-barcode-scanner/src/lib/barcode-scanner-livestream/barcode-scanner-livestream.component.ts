@@ -18,6 +18,10 @@ export class BarcodeScannerLivestreamComponent implements OnChanges, OnDestroy {
 
     @Input() deviceId: string;
 
+    @Input() width: string;
+
+    @Input() height: string;
+
     @Input() config: QuaggaConfig;
 
     // Outputs
@@ -25,7 +29,15 @@ export class BarcodeScannerLivestreamComponent implements OnChanges, OnDestroy {
 
     @Output() started = new EventEmitter();
 
-    @ViewChild('BarcodeScanner') barcodeScanner: ElementRef;
+    @ViewChild('BarcodeScanner') barcodeScanner: ElementRef<HTMLDivElement>;
+
+    get _width(): string {
+        return !this.height && this.width ? `${this.width}` : 'auto';
+    }
+
+    get _height(): string {
+        return this.height ? `${this.height}` : 'auto';
+    }
 
     private _started = false;
 
