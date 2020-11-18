@@ -10,7 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "package": "ng build ngx-barcode-scanner --prod && cd dist/ngx-barcode-scanner && npm pack",
-    "release": "ng build ngx-barcode-scanner  --prod && cp README.md dist/ngx-barcode-scanner && cd dist/ngx-barcode-scanner && npm publish"
+    "release": "ng build ngx-barcode-scanner  --prod && cp README.md dist/ngx-barcode-scanner && cp CHANGELOG.md dist/ngx-barcode-scanner && cd dist/ngx-barcode-scanner && npm publish"
   },
   "repository": {
     "type": "git",
