@@ -22,9 +22,13 @@ export class BarcodeScannerLivestreamOverlayComponent implements OnDestroy {
 
     @Input() deviceId: string;
 
-    @Input() width: string;
+    @Input() width = '90vw';
+
+    @Input() maxWidth = '640px';
 
     @Input() height: string;
+
+    @Input() maxHeight: string;
 
     @Input() config: QuaggaConfig;
 

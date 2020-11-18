@@ -2,9 +2,8 @@
   position: relative;
   video,
   canvas {
-    max-width: 100%;
     width: 100%;
-    height: auto;
+    height: 100%;
   }
   canvas.drawingBuffer {
     position: absolute;

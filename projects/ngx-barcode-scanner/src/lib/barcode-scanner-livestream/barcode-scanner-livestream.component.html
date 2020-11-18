@@ -2,13 +2,13 @@
   #BarcodeScanner
   class="scanner"
   [hidden]="!isStarted"
-  [style.height]="_height"
-  [style.width]="_width"
+  [style.max-height]="_maxHeight"
+  [style.max-width]="_maxWidth"
 >
-  <video [style.height]="_height" [style.width]="_width"></video>
+  <video [style.max-height]="_maxHeight" [style.max-width]="_maxWidth"></video>
   <canvas
-    [style.height]="_height"
-    [style.width]="_width"
+    [style.max-height]="_maxHeight"
+    [style.max-width]="_maxWidth"
     class="drawingBuffer"
   ></canvas>
 </div>

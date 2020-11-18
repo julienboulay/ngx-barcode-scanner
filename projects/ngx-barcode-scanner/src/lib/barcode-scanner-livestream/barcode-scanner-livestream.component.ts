@@ -18,9 +18,9 @@ export class BarcodeScannerLivestreamComponent implements OnChanges, OnDestroy {
 
     @Input() deviceId: string;
 
-    @Input() width: string;
+    @Input() maxWidth = '100%';
 
-    @Input() height: string;
+    @Input() maxHeight: string;
 
     @Input() config: QuaggaConfig;
 
@@ -31,12 +31,12 @@ export class BarcodeScannerLivestreamComponent implements OnChanges, OnDestroy {
 
     @ViewChild('BarcodeScanner') barcodeScanner: ElementRef<HTMLDivElement>;
 
-    get _width(): string {
-        return !this.height && this.width ? `${this.width}` : 'auto';
+    get _maxWidth(): string {
+        return this.maxWidth ? `${this.maxWidth}` : 'auto';
     }
 
-    get _height(): string {
-        return this.height ? `${this.height}` : 'auto';
+    get _maxHeight(): string {
+        return this.maxHeight ? `${this.maxHeight}` : 'auto';
     }
 
     private _started = false;

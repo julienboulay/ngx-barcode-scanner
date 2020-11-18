@@ -1,5 +1,11 @@
 <div class="barcode-scanner-livestream-overlay" [hidden]="!showScanner">
-  <div class="barcode-scanner-livestream-overlay-content">
+  <div
+    class="barcode-scanner-livestream-overlay-content"
+    [style.width]="width"
+    [style.max-width]="maxWidth"
+    [style.height]="height"
+    [style.max-height]="maxHeight"
+  >
     <div
       class="barcode-scanner-livestream-overlay-close"
       *ngIf="isStarted"
@@ -11,8 +17,6 @@
       [type]="type"
       [deviceId]="deviceId"
       [config]="config"
-      [width]="width"
-      [height]="height"
       (valueChanges)="onValueChanges($event)"
       (started)="onStarted($event)"
     ></barcode-scanner-livestream>
