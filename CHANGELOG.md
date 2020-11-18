@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.1.1 (2020-11-18)
+
+### Feature
+
+- Better responsive components:
+  - `width` and `height` can be set on `barcode-scanner-livestream-overlay`
+  - `maxWidth` and `maxHeight` can be set on `barcode-scanner-livestream` and `barcode-scanner-livestream-overlay`
+
 ## v0.1.0 (2020-11-18)
 
 ### Breaking changes
