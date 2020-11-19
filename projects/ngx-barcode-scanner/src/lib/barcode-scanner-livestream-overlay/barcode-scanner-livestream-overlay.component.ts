@@ -30,7 +30,7 @@ export class BarcodeScannerLivestreamOverlayComponent implements OnDestroy {
 
     @Input() maxHeight: string;
 
-    @Input() config: QuaggaConfig;
+    @Input() config: Partial<QuaggaConfig>;
 
     @Output() valueChanges = new EventEmitter<string>();
 
