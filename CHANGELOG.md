@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.1.2 (2020-11-19)
+
+### Fix
+
+- Add missing properties to QuaggaConfig
+- Update README with a project description and fix typo
+
 ## v0.1.1 (2020-11-18)
 
 ### Feature
