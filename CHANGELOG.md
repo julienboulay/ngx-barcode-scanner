@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.2.0 (2020-11-20)
+
+### Breaking changes
+
+- Replace [Quagga](https://serratus.github.io/quaggaJS) by [Quagga2](https://github.com/ericblade/quagga2)  
+  `QuaggaConfig` is replaced by `QuaggaJSConfigObject`
+
 ## v0.1.2 (2020-11-19)
 
 ### Fix

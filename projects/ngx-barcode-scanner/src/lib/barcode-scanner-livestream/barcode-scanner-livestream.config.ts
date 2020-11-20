@@ -1,4 +1,6 @@
-export const DEFAULT_CONFIG: QuaggaConfig = {
+import { QuaggaJSConfigObject } from '@ericblade/quagga2';
+
+export const DEFAULT_CONFIG: QuaggaJSConfigObject = {
     inputStream: {
         name: 'Live',
         type: 'LiveStream',
@@ -22,43 +24,3 @@ export const DEFAULT_CONFIG: QuaggaConfig = {
     }
 };
 
-export interface QuaggaConfig {
-    inputStream: {
-        name: string,
-        type: string,
-        target: any,
-        constraints: {
-            width: { min: number },
-            height: { min: number },
-            aspectRatio: { min: number, max: number },
-            facingMode: string, // or user
-            deviceId?: string
-        },
-        singleChannel: boolean // true: only the red color-channel is read
-    };
-    frequency?: number;
-    debug?: boolean;
-    locator: {
-        patchSize: string,
-        halfSample: boolean,
-        debug?: {
-            showCanvas: boolean,
-            showPatches: boolean,
-            showFoundPatches: boolean,
-            showSkeleton: boolean,
-            showLabels: boolean,
-            showPatchLabels: boolean,
-            showRemainingPatchLabels: boolean,
-            boxFromPatches: {
-                showTransformed: boolean,
-                showTransformedBox: boolean,
-                showBB: boolean
-            }
-        }
-    };
-    locate: boolean;
-    numOfWorkers: number;
-    decoder: {
-        readers: string[]
-    };
-}

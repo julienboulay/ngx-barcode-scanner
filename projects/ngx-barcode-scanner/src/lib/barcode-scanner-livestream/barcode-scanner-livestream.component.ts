@@ -1,9 +1,9 @@
 import {
     Component, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, Output, SimpleChanges, ViewChild, ViewEncapsulation
 } from '@angular/core';
+import Quagga, { QuaggaJSConfigObject } from '@ericblade/quagga2';
 import defaultsDeep from 'lodash.defaultsdeep';
-import * as Quagga from 'quagga';
-import { DEFAULT_CONFIG, QuaggaConfig } from './barcode-scanner-livestream.config';
+import { DEFAULT_CONFIG } from './barcode-scanner-livestream.config';
 import { mapToReader } from './barcode-types';
 
 @Component({
@@ -22,7 +22,7 @@ export class BarcodeScannerLivestreamComponent implements OnChanges, OnDestroy {
 
     @Input() maxHeight: string;
 
-    @Input() config: Partial<QuaggaConfig>;
+    @Input() config: Partial<QuaggaJSConfigObject>;
 
     // Outputs
     @Output() valueChanges = new EventEmitter();
@@ -45,7 +45,7 @@ export class BarcodeScannerLivestreamComponent implements OnChanges, OnDestroy {
         return this._started;
     }
 
-    private configQuagga: QuaggaConfig;
+    private configQuagga: QuaggaJSConfigObject;
 
     ngOnDestroy(): void {
         this.stop();

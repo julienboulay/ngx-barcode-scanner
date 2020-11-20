@@ -1,6 +1,6 @@
 # ngx-barcode-scanner component
 
-Angular components for [QuaggaJS](https://serratus.github.io/quaggaJS/) barcode reader.
+Angular components for [QuaggaJS](https://serratus.github.io/quaggaJS/) barcode reader. It uses the new [Quagga2](https://github.com/ericblade/quagga2) supported version.
 Supporting Angular 10+
 
 [![npm version](https://badge.fury.io/js/ngx-barcode-scanner.svg)](https://www.npmjs.com/ngx-barcode-scanner)
@@ -27,7 +27,7 @@ A simple demo is available [here](https://julienboulay.github.io/ngx-barcode-sca
 Install through npm:
 
 ```bash
-npm install --save quagga ngx-barcode-scanner
+npm install --save @ericblade/quagga2 ngx-barcode-scanner
 ```
 
 ## Usage
