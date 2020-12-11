@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { QuaggaJSResultObject } from '@ericblade/quagga2';
 import { BarcodeScannerLivestreamComponent } from 'ngx-barcode-scanner';
 
 @Component({
@@ -17,7 +18,8 @@ export class BarcodeScannerLivestreamRouteComponent implements AfterViewInit {
         this.barcodeScanner.start();
     }
 
-    onValueChanges(result): void {
+    onValueChanges(result: QuaggaJSResultObject): void {
+        console.log(result.codeResult.code)
         this.barcodeValue = result.codeResult.code;
     }
 

@@ -1,8 +1,10 @@
 import {
-    Component, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, Output, SimpleChanges, ViewChild, ViewEncapsulation
+    Component, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, Output, ViewChild, ViewEncapsulation
 } from '@angular/core';
-import Quagga, { QuaggaJSConfigObject } from '@ericblade/quagga2';
+import Quagga, { QuaggaJSConfigObject, QuaggaJSResultObject } from '@ericblade/quagga2';
 import defaultsDeep from 'lodash.defaultsdeep';
+import { Subject } from 'rxjs';
+import { filter, takeUntil } from 'rxjs/operators';
 import { DEFAULT_CONFIG } from './barcode-scanner-livestream.config';
 import { mapToReader } from './barcode-types';
 
@@ -24,10 +26,17 @@ export class BarcodeScannerLivestreamComponent implements OnChanges, OnDestroy {
 
     @Input() config: Partial<QuaggaJSConfigObject>;
 
-    // Outputs
-    @Output() valueChanges = new EventEmitter();
+    @Input() errorFilter: {
+        median?: number
+        threshold?: number
+    }
 
-    @Output() started = new EventEmitter();
+    _valueChanges = new Subject();
+
+    // Outputs
+    @Output() valueChanges = new EventEmitter<QuaggaJSResultObject>();
+
+    @Output() started = new EventEmitter<boolean>();
 
     @ViewChild('BarcodeScanner') barcodeScanner: ElementRef<HTMLDivElement>;
 
@@ -45,13 +54,50 @@ export class BarcodeScannerLivestreamComponent implements OnChanges, OnDestroy {
         return this._started;
     }
 
+    private _destroyed: Subject<boolean> = new Subject<boolean>();
+
     private configQuagga: QuaggaJSConfigObject;
+
+    constructor() {
+
+        this._valueChanges.pipe(
+            takeUntil(this._destroyed),
+            filter((result: QuaggaJSResultObject) => {
+                const errors: number[] = result.codeResult.decodedCodes
+                    .filter(_ => _.error !== undefined)
+                    .map(_ => _.error);
+
+
+                const median = this._getMedian(errors);
+
+                //Filter result when median and/or threshold parameters are provided
+                //Good result for code_128 : median = 0.08 and threshold = 0.1
+                return !this.errorFilter ||
+                    !(this.errorFilter.median && median > this.errorFilter.median
+                        || this.errorFilter.threshold && errors.some(err => err > this.errorFilter.threshold))
+            }),
+        ).subscribe(result => {
+            const drawingCtx = Quagga.canvas.ctx.overlay;
+
+            Quagga.ImageDebug.drawPath(result.line, {
+                x: 'x',
+                y: 'y',
+            }, drawingCtx, {
+                color: 'red',
+                lineWidth: 3,
+            });
+
+            this.valueChanges.next(result);
+        })
+    }
 
     ngOnDestroy(): void {
         this.stop();
+        this._destroyed.next(true);
+        this._destroyed.complete();
     }
 
-    ngOnChanges(changes: SimpleChanges): void {
+    ngOnChanges(): void {
         this.restart();
     }
 
@@ -84,6 +130,15 @@ export class BarcodeScannerLivestreamComponent implements OnChanges, OnDestroy {
         });
     }
 
+    private _getMedian(arr: number[]): number {
+        arr.sort((a, b) => a - b);
+        const half = Math.floor(arr.length / 2);
+        if (arr.length % 2 === 1) // Odd length
+            return arr[half];
+        return (arr[half - 1] + arr[half]) / 2.0;
+    }
+
+
     async start(): Promise<void> {
         if (!this._started) {
             await this._init();
@@ -108,7 +163,7 @@ export class BarcodeScannerLivestreamComponent implements OnChanges, OnDestroy {
         }
     }
 
-    onProcessed(result: any): any {
+    onProcessed(result: QuaggaJSResultObject): any {
         const drawingCtx = Quagga.canvas.ctx.overlay;
         const drawingCanvas = Quagga.canvas.dom.overlay;
 
@@ -140,21 +195,11 @@ export class BarcodeScannerLivestreamComponent implements OnChanges, OnDestroy {
                 });
             }
 
-            if (result.codeResult && result.codeResult.code) {
-                Quagga.ImageDebug.drawPath(result.line, {
-                    x: 'x',
-                    y: 'y',
-                }, drawingCtx, {
-                    color: 'red',
-                    lineWidth: 3,
-                });
-            }
-
         }
     }
 
-    onDetected(result): void {
-        this.valueChanges.next(result);
+    onDetected(result: QuaggaJSResultObject): void {
+        this._valueChanges.next(result);
     }
 
 }
