@@ -3,9 +3,22 @@
 Angular components for [QuaggaJS](https://serratus.github.io/quaggaJS/) barcode reader. It uses the new [Quagga2](https://github.com/ericblade/quagga2) supported version.
 Supporting Angular 10+
 
-[![npm version](https://badge.fury.io/js/ngx-barcode-scanner.svg)](https://www.npmjs.com/ngx-barcode-scanner)
-[![Dependency Status](https://david-dm.org/julienboulay/ngx-barcode-scanner.svg)](https://david-dm.org/julienboulay/ngx-barcode-scanner)
-[![devDependency Status](https://david-dm.org/julienboulay/ngx-barcode-scanner/dev-status.svg)](https://david-dm.org/julienboulay/ngx-barcode-scanner#info=devDependencies)
+<a href="https://www.npmjs.com/package/ngx-barcode-scanner">
+    <img src="https://img.shields.io/npm/v/ngx-barcode-scanner?style=flat-square&color" alt="npm@latest">
+</a>
+<a href="https://www.npmjs.com/package/ngx-barcode-scanner">
+    <img alt="Dependencies status" src="https://img.shields.io/librariesio/github/julienboulay/ngx-barcode-scanner">
+</a>
+<a href="https://www.npmjs.com/package/ngx-barcode-scanner">
+    <img src="https://img.shields.io/npm/dw/ngx-barcode-scanner?style=flat-square" alt="Downloads/week">
+</a>
+<a href="https://www.npmjs.com/package/ngx-barcode-scanner">
+    <img src="https://img.shields.io/npm/dependency-version/ngx-barcode-scanner/peer/@ericblade/quagga2?style=flat-square">
+</a>
+<a href="https://www.npmjs.com/package/ngx-barcode-scanner">
+    <img src="https://img.shields.io/npm/dependency-version/ngx-barcode-scanner/peer/@angular/core?style=flat-square">
+</a>
+
 [![GitHub issues](https://img.shields.io/github/issues/julienboulay/ngx-barcode-scanner.svg)](https://github.com/julienboulay/ngx-barcode-scanner/issues)
 [![GitHub stars](https://img.shields.io/github/stars/julienboulay/ngx-barcode-scanner.svg)](https://github.com/julienboulay/ngx-barcode-scanner/stargazers)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/julienboulay/ngx-barcode-scanner/master/LICENSE)
@@ -91,6 +104,16 @@ export class Demo implements AfterViewInit {
   }
 }
 ```
+
+## Compatibility
+
+Choose the right version
+
+| Angular    | ngx-barcode-scanner  | @ericblade/quagga2 |
+| :---:      | :---:                | :---:              |
+| 10         | 0.2.0                | 1.2.6              |
+| 11         | 0.2.0                | 1.2.6              |
+
 
 ## Development
 

@@ -24,8 +24,8 @@
     "imageprocessing"
   ],
   "peerDependencies": {
-    "@angular/common": ">=10.0.0",
-    "@angular/core": ">=10.0.0",
+    "@angular/common": "10.x || 11.x",
+    "@angular/core": "10.x || 11.x",
     "@ericblade/quagga2": "^1.2.6"
   },
   "dependencies": {
