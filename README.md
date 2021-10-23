@@ -28,6 +28,7 @@ Supporting Angular 10+
 - [Demo](#demo)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Compatibility](#compatibility)
 - [Development](#development)
 - [License](#license)
 
