@@ -1,5 +1,12 @@
 # Changelog
 
+
+## v0.3.0 (2021-10-24)
+
+### Breaking changes
+
+- Add compatibility for Angular 12 and Ivy
+
 ## v0.2.0 (2020-11-20)
 
 ### Breaking changes
