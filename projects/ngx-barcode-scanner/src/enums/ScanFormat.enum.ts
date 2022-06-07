@@ -1,0 +1,15 @@
+export enum ScanFormat {
+  CODE_128 = 'code_128',
+  CODE_39 = 'code_39',
+  CODE_39_VIN = 'code_39_vin',
+  EAN = 'ean',
+  EAN_EXTENDED = 'ean_extended',
+  EAN_8 = 'ean_8',
+  UPC = 'upc',
+  UPC_E = 'upc_e',
+  CODABAR = 'codabar',
+  I2OF5 = 'i2of5',
+  _2OF5 = '2of5',
+  CODE_93 = 'code_93',
+  QR_CODE = 'qr_code',
+}
