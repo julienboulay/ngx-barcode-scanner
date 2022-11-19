@@ -1,5 +1,10 @@
 # Changelog
 
+## v13.0.0 (2022-11-19)
+
+### Breaking changes
+
+- Upgrade to Angular 13 and Quagga2 1.7.7
 
 ## v0.3.0 (2021-10-24)
 

@@ -1,6 +1,6 @@
 {
   "name": "ngx-barcode-scanner",
-  "version": "0.3.0",
+  "version": "13.0.0",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -24,9 +24,9 @@
     "imageprocessing"
   ],
   "peerDependencies": {
-    "@angular/common": ">=12.0.0",
-    "@angular/core": ">=12.0.0",
-    "@ericblade/quagga2": "^1.4.2"
+    "@angular/common": ">=13.0.0",
+    "@angular/core": ">=13.0.0",
+    "@ericblade/quagga2": "^1.7.7"
   },
   "dependencies": {
     "lodash.defaultsdeep": "^4.6.1"
