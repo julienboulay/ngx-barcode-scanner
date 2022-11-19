@@ -173,6 +173,5 @@
         }
       }
     }
-  },
-  "defaultProject": "ngx-barcode-scanner-app"
+  }
 }
