@@ -31,6 +31,15 @@ export class BarcodeScannerLivestreamComponent implements OnChanges, OnDestroy {
         threshold?: number
     }
 
+    @Input() set torch(value: boolean) {
+      const track = Quagga.CameraAccess.getActiveTrack();
+      if (track) {
+        track.applyConstraints({
+          advanced: [{ torch: value } as any],
+        });
+      }
+    }
+
     _valueChanges = new Subject();
 
     // Outputs
